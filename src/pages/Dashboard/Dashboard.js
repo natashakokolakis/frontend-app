@@ -93,7 +93,7 @@ export default class Dashboard extends Component{
             username = INVESTMENT_USER
 
         if(showOrientation && level!=0)
-        return <WelcomeSlider close={this.hideWelcomePage}></WelcomeSlider>
+        return <WelcomeSlider history={this.props.history} close={this.hideWelcomePage}></WelcomeSlider>
 
         const ChartTableMin = FetchDataMin(ChartTable, getOverviewTableData, {"key":"username", "value":username});
         const DoughnutChartMin = FetchDataMin(DoughnutChart, getOverviewTableData, {"key":"username", "value":username});

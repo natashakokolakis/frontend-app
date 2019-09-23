@@ -10,6 +10,27 @@
         constructor(props){
             super(props)
             this.onClose = this.onClose.bind(this)
+            this.navigateToPayments = this.navigateToPayments.bind(this)
+        }
+
+        navigateToPayments(){
+
+            const new_user = parseInt(localStorage.getItem("new_user"));
+            const username = localStorage.getItem("username");
+            console.log("new_user ", new_user)
+    
+            if(new_user){
+                updateUserInfo({ username, new_user:0})        
+                .then((res)=>{
+                    localStorage.setItem("new_user",0);
+                    this.props.history.push("/payments");
+                })
+                .catch((err)=>{
+                    //triggers a state change which will refresh all components
+                    // this.showAlert(err.response.data.code,'error');
+                });
+            }
+            
         }
 
         onClose(){
@@ -96,7 +117,7 @@
                         <h3>Get started on building your portfolio now</h3>
                         <Row className="justify-content-center">
                             <Col xs={6} md={6} lg={3}>
-                                <button name="deposit" className="btn btn-info deposit-btn" >Deposit Funds</button>
+                                <a name="deposit" className="btn btn-info deposit-btn"  onClick={this.navigateToPayments}>Make a Deposit!</a>
                             </Col>
                         </Row>
                         </Carousel.Caption>
