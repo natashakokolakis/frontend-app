@@ -7,7 +7,8 @@ import './Dashboard.scss';
 import FetchDataMin from '../../HOC/FetchDataMin'
 import {    getOverviewTableData,
             getBalanceHistory,
-            getTransactionHistory } from '../../service/axios-service'
+            getTransactionHistory, 
+            } from '../../service/axios-service'
 import { user, balance, account} from '../../service/body-data'
 import { INVESTMENT_USER } from '../../config/config'
 
@@ -22,7 +23,8 @@ import {    LeftSidebar,
             CustomSnackbar,
             GlobalUpdateModal,
             DepositModal,
-            WithdrawModal } from './../../components';
+            WithdrawModal,
+            WelcomeSlider } from './../../components';
 
 export default class Dashboard extends Component{
     /**
@@ -43,11 +45,13 @@ export default class Dashboard extends Component{
             isAlertVisible : false,
             alertType:'',
             alertMessage:'',
-
+            showOrientation: parseInt(localStorage.getItem("new_user")) == 1
         };
 
        this.showAlert = this.showAlert.bind(this);
        this.dismissAlert = this.dismissAlert.bind(this);
+       this.showWelcomePage = this.showWelcomePage.bind(this);
+       this.hideWelcomePage = this.hideWelcomePage.bind(this);
     }
 
     showAlert(message, type){
@@ -56,6 +60,17 @@ export default class Dashboard extends Component{
 
     dismissAlert(){
         this.setState({ isAlertVisible: false });
+    }
+
+    showWelcomePage(){
+        this.setState({ showOrientation: true});
+    }
+
+    hideWelcomePage(){
+        this.setState({ showOrientation: false});
+
+       
+        
     }
 
 
@@ -68,19 +83,25 @@ export default class Dashboard extends Component{
 
 
     render(){
-        const { refresh_interval_sec, linechart_time_days, isAlertVisible, alertType, alertMessage} = this.state;
+        const { refresh_interval_sec, linechart_time_days, isAlertVisible, alertType, alertMessage, showOrientation} = this.state;
         const ref_code = localStorage.getItem("ref_code");
         let username = localStorage.getItem("username");
         const level =  localStorage.getItem("user_level");
         console.log("YOUR LEVEL IS: " + level)
-        // console.log("username ", localStorage.getItem("username"))
+        
         if(level == 0)
             username = INVESTMENT_USER
+
+        if(showOrientation && level!=0)
+        return <WelcomeSlider close={this.hideWelcomePage}></WelcomeSlider>
 
         const ChartTableMin = FetchDataMin(ChartTable, getOverviewTableData, {"key":"username", "value":username});
         const DoughnutChartMin = FetchDataMin(DoughnutChart, getOverviewTableData, {"key":"username", "value":username});
         const LineChartMin = FetchDataMin(LineChart, getBalanceHistory, {username , time_period_days:linechart_time_days, chart:true });
         const TransactionTableMin = FetchDataMin(TransactionTable, getTransactionHistory, level == 0 ? {} : {username});
+
+
+        
 
         return (
             <div >

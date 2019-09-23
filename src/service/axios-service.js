@@ -28,3 +28,4 @@ export const getRatesInCAD = () => Axios.get(BACKEND_API + 'fx/quote_rates_in_ca
 export const exchangeInvestment = (data) => Axios.post(BACKEND_API + 'fx/exchange', data);
 export const getRatesHistory = (data) => Axios.post(BACKEND_API + "fx/rates_history", data);
 
+export const updateUserInfo = (data) => Axios.post(FRONTEND_API+'update_info', data);
