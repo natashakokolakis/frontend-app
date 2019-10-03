@@ -148,6 +148,12 @@ class LeftSidebar extends Component {
                     {/* <i class="fas fa-steering-wheel"></i> */}
                     <Link to="/affiliate" className="nav-link-top">Affiliate</Link>
                 </li>
+
+                <li className="nav-item">
+                    <i className="fa fa-exchange"></i>
+                    <Link to="/payments" className="nav-link-top">Payments</Link>
+                </li>
+
                 <li className="nav-item">
                     <i className="fa fa-clock-o"></i>
                     <Link to="/stats" className="nav-link-top">Stats</Link>

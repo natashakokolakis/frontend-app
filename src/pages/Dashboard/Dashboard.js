@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Navbar, NavbarBrand, Button, Collapse, NavDropdown } from 'react-bootstrap';
+import { AnnotationLabel } from 'react-annotation';
 import PropTypes from 'prop-types';
 import './Dashboard.scss';
 
@@ -11,6 +12,7 @@ import {    getOverviewTableData,
             } from '../../service/axios-service'
 import { user, balance, account} from '../../service/body-data'
 import { INVESTMENT_USER } from '../../config/config'
+// import { AnnotationLabel, EditableAnnotation, ConnectorElbow, ConnectorEndDot, Note } from 'react-annotation'
 
 import {    LeftSidebar,
             ResponsiveSidebar,
@@ -92,8 +94,8 @@ export default class Dashboard extends Component{
         if(level == 0)
             username = INVESTMENT_USER
 
-        if(showOrientation && level!=0)
-        return <WelcomeSlider history={this.props.history} close={this.hideWelcomePage}></WelcomeSlider>
+        // if(showOrientation && level!=0)
+        // return 
 
         const ChartTableMin = FetchDataMin(ChartTable, getOverviewTableData, {"key":"username", "value":username});
         const DoughnutChartMin = FetchDataMin(DoughnutChart, getOverviewTableData, {"key":"username", "value":username});
@@ -105,11 +107,118 @@ export default class Dashboard extends Component{
 
         return (
             <div >
+            <div className="page-overlay">
+            {
+                            (showOrientation && level!=0) && <WelcomeSlider
+                            show={showOrientation}
+                            onHide={this.hideWelcomePage} 
+                            history={this.props.history} close={this.hideWelcomePage}></WelcomeSlider>
+            }
+      
+            <svg height="100%" width="100%">
+
+                {/* <AnnotationLabel
+                x={159}
+                y={60}
+                dy={117}
+                dx={162}
+                color={"#9610ff"}
+                className="show-bg"
+                editMode={false}
+                note={{"title":"Overall Investment View",
+                "label":"Longer text to show text wrapping",
+                "align":"middle",
+                "orientation":"topBottom",
+                "bgPadding":20,
+                "padding":15,
+                "titleColor":"#59039c",
+                "lineType":"vertical"}}
+                connector={{"type":"elbow","end":"dot"}} /> */}
+
+                {/* <AnnotationLabel
+                x={159}
+                y={107}
+                dy={117}
+                dx={162}
+                color={"#9610ff"}
+                className="show-bg"
+                editMode={false}
+                note={{"title":"Invite Friends",
+                "label":"Longer text to show text wrapping",
+                "align":"middle",
+                "orientation":"topBottom",
+                "bgPadding":20,
+                "padding":15,
+                "titleColor":"#59039c",
+                "lineType":"vertical"}}
+                connector={{"type":"elbow","end":"dot"}} /> */}
+
+                {/* <AnnotationLabel
+                x={159}
+                y={150}
+                dy={117}
+                dx={162}
+                color={"#9610ff"}
+                className="show-bg"
+                editMode={false}
+                note={{"title":"Deposit/ Withdraw Investments",
+                "label":"Longer text to show text wrapping",
+                "align":"middle",
+                "orientation":"topBottom",
+                "bgPadding":20,
+                "padding":15,
+                "titleColor":"#59039c",
+                "lineType":"vertical"}}
+                connector={{"type":"elbow","end":"dot"}} /> */}
+
+                {/* <AnnotationLabel
+                x={159}
+                y={240}
+                dy={117}
+                dx={162}
+                color={"#9610ff"}
+                className="show-bg"
+                editMode={false}
+                note={{"title":"Trade between investments   ",
+                "label":"Longer text to show text wrapping",
+                "align":"middle",
+                "orientation":"topBottom",
+                "bgPadding":20,
+                "padding":15,
+                "titleColor":"#59039c",
+                "lineType":"vertical"}}
+                connector={{"type":"elbow","end":"dot"}} /> */}
+
+                 {/* <AnnotationLabel
+                x={159}
+                y={450}
+                dy={117}
+                dx={162}
+                color={"#9610ff"}
+                className="show-bg"
+                editMode={false}
+                note={{"title":"Investment level details",
+                "label":"Longer text to show text wrapping",
+                "align":"middle",
+                "orientation":"topBottom",
+                "bgPadding":20,
+                "padding":15,
+                "titleColor":"#59039c",
+                "lineType":"vertical"}}
+                connector={{"type":"elbow","end":"dot"}} 
+                subject={{"width":-50,"height":100}}/> */}
+            </svg>
+           
+            </div>
+
+
             <div className="navigation d-lg-none d-sm">
                     <ResponsiveSidebar  history={this.props.history} />
             </div>
             
             <div className="dashboard-container">
+
+            
                 <CustomSnackbar open={isAlertVisible} variant={alertType} message={alertMessage} onClose={this.dismissAlert}></CustomSnackbar>
                     
                 <div className="navigation d-none d-lg-block">
@@ -118,9 +227,12 @@ export default class Dashboard extends Component{
 
                 <Container fluid={true} className="content-wrapper " id="content-div">
                     <Container class="row form-group">
+                    
                     <Row >
-                        <Col></Col>
-                        <Col></Col>
+                        <Col> 
+                        
+                        </Col>
+                        
                     </Row>
 
                     <Row style={{ alignItems: "center"}} >
@@ -156,6 +268,8 @@ export default class Dashboard extends Component{
                 
                 
             </div>    
+
+            
             </div>    
         );
     }
