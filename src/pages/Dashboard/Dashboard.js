@@ -112,109 +112,18 @@ export default class Dashboard extends Component{
 
         return (
             <div >
-            <div className="page-overlay">
             {
-                            (showOrientation && level!=0) && <WelcomeSlider
-                            show={showOrientation}
-                            onHide={this.hideWelcomePage} 
-                            history={this.props.history} close={this.hideWelcomePage}></WelcomeSlider>
-            }
-      
-            <svg height="100%" width="100%">
-
-                {/* <AnnotationLabel
-                x={159}
-                y={60}
-                dy={117}
-                dx={162}
-                color={"#9610ff"}
-                className="show-bg"
-                editMode={false}
-                note={{"title":"Overall Investment View",
-                "label":"Longer text to show text wrapping",
-                "align":"middle",
-                "orientation":"topBottom",
-                "bgPadding":20,
-                "padding":15,
-                "titleColor":"#59039c",
-                "lineType":"vertical"}}
-                connector={{"type":"elbow","end":"dot"}} /> */}
-
-                {/* <AnnotationLabel
-                x={159}
-                y={107}
-                dy={117}
-                dx={162}
-                color={"#9610ff"}
-                className="show-bg"
-                editMode={false}
-                note={{"title":"Invite Friends",
-                "label":"Longer text to show text wrapping",
-                "align":"middle",
-                "orientation":"topBottom",
-                "bgPadding":20,
-                "padding":15,
-                "titleColor":"#59039c",
-                "lineType":"vertical"}}
-                connector={{"type":"elbow","end":"dot"}} /> */}
-
-                {/* <AnnotationLabel
-                x={159}
-                y={150}
-                dy={117}
-                dx={162}
-                color={"#9610ff"}
-                className="show-bg"
-                editMode={false}
-                note={{"title":"Deposit/ Withdraw Investments",
-                "label":"Longer text to show text wrapping",
-                "align":"middle",
-                "orientation":"topBottom",
-                "bgPadding":20,
-                "padding":15,
-                "titleColor":"#59039c",
-                "lineType":"vertical"}}
-                connector={{"type":"elbow","end":"dot"}} /> */}
-
-                {/* <AnnotationLabel
-                x={159}
-                y={240}
-                dy={117}
-                dx={162}
-                color={"#9610ff"}
-                className="show-bg"
-                editMode={false}
-                note={{"title":"Trade between investments   ",
-                "label":"Longer text to show text wrapping",
-                "align":"middle",
-                "orientation":"topBottom",
-                "bgPadding":20,
-                "padding":15,
-                "titleColor":"#59039c",
-                "lineType":"vertical"}}
-                connector={{"type":"elbow","end":"dot"}} /> */}
-
-                 {/* <AnnotationLabel
-                x={159}
-                y={450}
-                dy={117}
-                dx={162}
-                color={"#9610ff"}
-                className="show-bg"
-                editMode={false}
-                note={{"title":"Investment level details",
-                "label":"Longer text to show text wrapping",
-                "align":"middle",
-                "orientation":"topBottom",
-                "bgPadding":20,
-                "padding":15,
-                "titleColor":"#59039c",
-                "lineType":"vertical"}}
-                connector={{"type":"elbow","end":"dot"}} 
-                subject={{"width":-50,"height":100}}/> */}
-            </svg>
-           
-            </div>
+             (showOrientation && level!=0) && 
+             (<div className="page-overlay">
+            
+                <WelcomeSlider
+                show={showOrientation}
+                onHide={this.hideWelcomePage} 
+                history={this.props.history} close={this.hideWelcomePage}></WelcomeSlider>
+            
+            </div>)
+        
+        }
 
 
             <div className="navigation d-lg-none d-sm">

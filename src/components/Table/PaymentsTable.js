@@ -16,24 +16,27 @@ class PaymentsTable extends Component {
 
     render(){
         const { data, onDeposit, onWithdraw }= this.props;
+        const username = localStorage.getItem("username")
 
     
         const columns = [
             { 
                 Header: 'Investment' ,
-                accessor: 'investment_name'
+                accessor: 'investment_name',
+                // id:'investment'
             
             },
             { 
                 Header:'Balance',
                 accessor: (data)=> formatAmount(+data.balance),
+                id:'balance'
             },
             { 
                 Header:'Deposit/ Withdraw',
                 Cell: row => (
                     <div>
-                        <button onClick={() => onDeposit(row.account_id)}>Deposit</button>
-                        <button onClick={() => onWithdraw(row.account_id)}>Withdraw</button>
+                        <button className="btn btn-info payments-btn light-grey" onClick={() => onDeposit(row.investment_id, username, row.isCrypto)}>Deposit</button>
+                        <button className="btn btn-info payments-btn" onClick={() => onWithdraw(row.account_id)}>Withdraw</button>
                     </div>
                 )
 
@@ -42,17 +45,25 @@ class PaymentsTable extends Component {
 
     
         return(
-            <div>
-                <div className="Charttable-container d-none d-sm-block">
+            
+            <div className="transactiontable-container">
+            <div className="reacttable-container">
+                <div className="transaction-container">
+                    <div className="table-title">{ "Investments"}</div>
+            
                     <ReactTable
                         noDataText={'No investments found'}
                         className="-striped"
                         data={data}
                         columns={columns}
                         showPagination={false}
+                        resizable={true}
+                        minRows={0}
                     />
                 </div>
             </div>
+            </div>
+            
          )
     }
 }
