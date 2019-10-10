@@ -1,28 +1,56 @@
 import React, { Component } from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
+import { getUserInvestmentDetails } from '../../service/axios-service'
+
 import {   
     ResponsiveSidebar,
     LeftSidebar,
     Footer,
     CustomSnackbar,
+    PaymentsTable,
      } from './../../components';
 import { minHeight } from '@material-ui/system';
+import './Payments.scss'
 
 
 
 export default class Payments extends Component {
 
+   
     constructor(props){
         super(props);
         this.state = {
            
             isAlertVisible : false,
             alertType:'',
-            alertMessage:''
+            alertMessage:'',
+            investmentDetails:[]
         };
 
         this.showAlert = this.showAlert.bind(this);
         this.dismissAlert = this.dismissAlert.bind(this);
+        this.fetchInvestmentDetails = this.fetchInvestmentDetails.bind(this);
+    }
+
+    componentWillMount(){
+
+        this.fetchInvestmentDetails()
+
+    }
+
+    fetchInvestmentDetails(){
+
+        const username = localStorage.getItem("username")
+        getUserInvestmentDetails({username})
+        .then((res)=>{
+
+            
+            this.setState({investmentDetails: res.data.investment_details});
+        })
+        .catch((err)=>{
+            //triggers a state change which will refresh all components
+            // this.showAlert(err.response.data.code,'error');
+        });
     }
 
     showAlert(message, type){
@@ -39,7 +67,7 @@ export default class Payments extends Component {
 
     render() {
 
-        const { isAlertVisible, alertType, alertMessage } = this.state;
+        const { isAlertVisible, alertType, alertMessage, investmentDetails } = this.state;
         return (
             <div>
 
@@ -56,7 +84,11 @@ export default class Payments extends Component {
                     <Container>
                     <div className="page-content" style={{minHeight:"100%"}}>
 
-                           InProgress
+                           <PaymentsTable
+                                data={investmentDetails}
+                                onDeposit={(id)=>{console.log("on deposit")}}
+                                onWithdraw={(id) => {console.log("on withdraw")}}
+                           />
 
                         
                     </div>
@@ -73,3 +105,5 @@ export default class Payments extends Component {
         )
     }
 }
+
+

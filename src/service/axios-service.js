@@ -29,3 +29,5 @@ export const exchangeInvestment = (data) => Axios.post(BACKEND_API + 'fx/exchang
 export const getRatesHistory = (data) => Axios.post(BACKEND_API + "fx/rates_history", data);
 
 export const updateUserInfo = (data) => Axios.post(FRONTEND_API+'update_info', data);
+
+export const getUserInvestmentDetails = (data) => Axios.post(BACKEND_API + 'users/investments', data);

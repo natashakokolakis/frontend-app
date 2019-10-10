@@ -7,98 +7,53 @@ import {Row, Col, Container} from "react-bootstrap"
 
 import PropTypes from 'prop-types';
 
-class ChartTable extends Component {
+class PaymentsTable extends Component {
     static propTypes = {
         data : PropTypes.object.isRequired
     }
 
+    
+
     render(){
-        const { data }= this.props;
+        const { data, onDeposit, onWithdraw }= this.props;
 
-        var CADSum = 0;
-        if(JSON.stringify(data) !== '{}'){
-            for(let i=0; i<data.user_balance.length; i++){
-                CADSum += +(data.user_balance[i].balance_cad);
-            }
-        }
-
+    
         const columns = [
-            { accessor: 'investment_name',
-              Footer: <span>{'Total in CAD'}</span>},
-            { id: 'balance',
-              accessor: (data)=> formatAmount(+data.balance),
-            },
-            { id: 'balance_cad',
-              accessor: (data) =>'$' + formatAmount((+data.balance_cad).toFixed(2),true),
-              Footer: <span>{`$${formatAmount((CADSum).toFixed(2))}`}</span>}
-        ]
-
-        const columnsSmall = [
             { 
-                // Cell: row => (
-                // <span> {row.value} </span>
-                // ),
-              style: {textAlign:"left"},
-              width: 110,
-              Cell: row => (
-                <Container><Row><Col>
-                    <div style={{whiteSpace:"normal", wordBreak:"normal"}}>
-                        {row.value}
-                     </div>
-                </Col></Row></Container>
-                
-               // <span className="text-align-left"> {"asdasdasdasd " + row.value} </span>
-            ),
-              accessor: 'investment_name',
-              Footer:  () => (
-              <Container><Row><Col>{'Total in CAD'}</Col> </Row> </Container>),
-             
+                Header: 'Investment' ,
+                accessor: 'investment_name'
+            
             },
-            { id: 'balance',
-              Cell: row => (
-                    <Container fluid={true}>
-                        <Row style={{justifyContent:"flex-end"}}>
-                            <Col><span>{row.value[0]}</span></Col>
-                        </Row>
-                        <Row style={{ justifyContent:"flex-end", fontSize:"smaller"}}> <Col>
-                            <span style={{color:"gray"}} >{`$${row.value[1]}`}</span>
-                        </Col></Row>
-                    </Container>        
-                ),
-              style: {textAlign:"end"},
-              accessor: (data) => [formatAmount(+data.balance), formatAmount((+data.balance_cad).toFixed(2),true) ],
-              Footer: () => (
-                <Container><Row><Col>{`$${formatAmount((CADSum).toFixed(2))}`}</Col> </Row> </Container>)
-              //width: 200,
+            { 
+                Header:'Balance',
+                accessor: (data)=> formatAmount(+data.balance),
             },
-        ]
-
-        if(JSON.stringify(data) === '{}')
-            return <div className="Charttable-container"></div> ;
-        else  if(typeof(data.code) !== 'undefined')
-            if( data.code === "Success" )
-                return(
+            { 
+                Header:'Deposit/ Withdraw',
+                Cell: row => (
                     <div>
-                        <div className="Charttable-container d-none d-sm-block">
-                            <ReactTable
-                                className="-striped"
-                                data={data.user_balance}
-                                columns={columns}
-                                pageSize={data.user_balance.length}
-                                showPagination={false}
-                            />
-                        </div>
-                        <div className="Charttable-container d-sm-none d-xs">
-                            <ReactTable
-                                className="-striped"
-                                data={data.user_balance}
-                                columns={columnsSmall}
-                                pageSize={data.user_balance.length}
-                                showPagination={false}
-                            />
-                        </div>
+                        <button onClick={() => onDeposit(row.account_id)}>Deposit</button>
+                        <button onClick={() => onWithdraw(row.account_id)}>Withdraw</button>
                     </div>
                 )
+
+            }            
+        ]
+
+    
+        return(
+            <div>
+                <div className="Charttable-container d-none d-sm-block">
+                    <ReactTable
+                        noDataText={'No investments found'}
+                        className="-striped"
+                        data={data}
+                        columns={columns}
+                        showPagination={false}
+                    />
+                </div>
+            </div>
+         )
     }
 }
-export default ChartTable;
+export default PaymentsTable;

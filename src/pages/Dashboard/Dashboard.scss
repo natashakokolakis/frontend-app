@@ -61,6 +61,7 @@
   scrollbar-width: none; /* Firefox */
 }
 
+
 .page-overlay {
     opacity:    1; 
     background: transparent; 
@@ -75,4 +76,22 @@
 .show-bg{
     background: #ffffff;
     enable-background: 100%
+}
+
+.expandButton{
+    position: absolute;
+    top:0;
+    right:0;
+    border:none;
+}
+
+.fullScreen{
+    background-color: #ffffff;
+    font-family: 'Lato';
+    height: 100%;
+}
+
+.navigation{
+    min-width: 210px;
+
 }
