@@ -116,7 +116,7 @@ export default class SimpleChart extends Component {
         const { interval } = this.state;
 
         const chartData = this.extractChartData(data, interval, dataType);
-        const chartOptions = this.getChartOptions(chartData, chartType, dataType, interval,index%COLORS.length );
+        const chartOptions = this.getChartOptions(chartData, chartType, dataType, interval, index%COLORS.length );
 
 
         return (
@@ -129,13 +129,13 @@ export default class SimpleChart extends Component {
                     </div>
                   <div>
                         <select name="interval" className="chart-dropdown" value={ this.state.interval } onChange={ this.handleChange }>
-                            	<option value='1'>Last 24 Hours</option>
-				<option value='30'>Last 30 Days</option>
+                            <option value='1'>Last 24 Hours</option>
+                            <option value='30'>Last 30 Days</option>
                             <option value='60'>Last 60 Days</option>
                             <option value='90'>Last 90 Days</option>
                             <option value='180'>Last 180 Days</option>
                             <option value='365'>Last 1 year</option>
- 			    <option value='365'>From Start</option>
+                            <option value='365'>From Start</option>
                         </select>
                     </div>
                 </div>
