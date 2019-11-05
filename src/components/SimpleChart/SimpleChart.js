@@ -53,7 +53,7 @@ export default class SimpleChart extends Component {
         if(dataType == "users")
             tooltip = {...tooltip, valueSuffix:' users'}
         else if (dataType == "balance" || dataType == "rates")
-            tooltip = {...tooltip, valueDecimals: 2, valuePrefix:'$'}
+            tooltip = {...tooltip, valueDecimals: 2, valuePrefix:''}
        
 
         return {
