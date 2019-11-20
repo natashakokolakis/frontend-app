@@ -9,7 +9,7 @@ import {
     TransferModal,
     TransactionTable,
     SimpleChart } from './../../components';
-import { getAccountDetails, getTransactionHistory, getAccountBalanceHistory} from '../../service/axios-service';
+import { getAccountDetails, getTransactionHistory, getAccountBalanceHistory, getNewTransactionHistory} from '../../service/axios-service';
 import { formatAmount } from '../../util/util'
 import { INVESTMENT_USER } from '../../config/config'
 import './Investment.scss'
@@ -120,7 +120,7 @@ export default class Investment extends Component {
         
         const level =  localStorage.getItem("user_level");
         let requestData = level == 0 ? { investment_id : this.props.match.params.investment_id} : { account_id}
-        getTransactionHistory(requestData)
+        getNewTransactionHistory(requestData)
         .then((res)=>{
             
             this.setState({account_tx_history: res.data});
