@@ -7,7 +7,9 @@ import Fullscreen from "react-full-screen";
 import FetchDataMin from '../../HOC/FetchDataMin'
 import {    getOverviewTableData,
             getBalanceHistory,
-            getTransactionHistory } from '../../service/axios-service'
+            getTransactionHistory,
+            getNewBalanceHistory,
+            getNewTransactionHistory } from '../../service/axios-service'
 import { user, balance, account} from '../../service/body-data'
 import { INVESTMENT_USER } from '../../config/config'
 
@@ -83,10 +85,8 @@ export default class Dashboard extends Component{
         const ChartTableMin = FetchDataMin(ChartTable, getOverviewTableData, {"key":"username", "value":username});
         const DoughnutChartMin = FetchDataMin(DoughnutChart, getOverviewTableData, {"key":"username", "value":username});
         const LineChartMin = FetchDataMin(LineChart, getBalanceHistory, {username , time_period_days:linechart_time_days, chart:true });
-        console.log("TABLE 0")
-        console.log(getTransactionHistory)
 
-        const TransactionTableMin = FetchDataMin(TransactionTable, getTransactionHistory, level == 0 ? {} : {username});
+        const TransactionTableMin = FetchDataMin(TransactionTable, getNewTransactionHistory, level == 0 ? {} : {username});
 
         return (
             <div >

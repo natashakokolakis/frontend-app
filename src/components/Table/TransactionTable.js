@@ -72,7 +72,7 @@ export default class TransactionTable extends Component {
             },
             { id: 'amount_cad', Header: 'Amount in CAD',
                 accessor: (data) => {
-                    return '$' + formatAmount((+data.amount_cad).toFixed(2),true);
+                    return '$' + formatAmount(data.amount_cad,true);
                 },
                 sortMethod: (a, b) => {
 

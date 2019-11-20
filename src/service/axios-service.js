@@ -9,6 +9,9 @@ export const getBalanceHistory = (data)=>Axios.post(BACKEND_API + 'users/balance
 export const getTransactionHistory = (data)=>Axios.post(BACKEND_API + 'accounts/transaction_history', data);
 export const getInvestments  = (data) => Axios.post(FRONTEND_API + 'all_investments', data);
 
+export const getNewBalanceHistory = (data)=>Axios.post(BACKEND_API + 'users/new_balance_history', data);
+export const getNewTransactionHistory = (data)=>Axios.post(BACKEND_API + 'accounts/new_transaction_history', data);
+
 export const transferAmount = (data) => Axios.post(BACKEND_API + 'transactions/transfer', data);
 export const globalUpdate = (data) => Axios.post(BACKEND_API + 'transactions/global_update', data);
 export const withdrawal = (data) => Axios.post(BACKEND_API + 'transactions/withdrawal', data);
