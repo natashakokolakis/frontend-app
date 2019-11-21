@@ -11,7 +11,7 @@ import {
     DoughnutChart,
     ExchangeTable,
     ChartTable } from './../../components';
-import { getTransactionHistory, getTotalUser, getDailyRegisteredUsers, getOverviewTableData} from '../../service/axios-service';
+import { getNewTransactionHistory, getTotalUser, getDailyRegisteredUsers, getOverviewTableData} from '../../service/axios-service';
 import { INVESTMENT_USER } from '../../config/config';
 import { getRatesInCAD } from '../../service/axios-service'
 import './Stats.scss'
