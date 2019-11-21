@@ -92,7 +92,7 @@ export default class Stats extends Component {
         });
     }
     updateTxHistory(){
-        getTransactionHistory()
+        getNewTransactionHistory()
         .then((res)=>{
             
             this.setState({tx_history: res.data});
