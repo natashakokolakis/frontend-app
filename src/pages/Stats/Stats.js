@@ -182,7 +182,7 @@ export default class Stats extends Component {
                             <ExchangeTable data={rates_in_cad}></ExchangeTable>
                         </Row>
                         <Row>
-                            <TransactionTableMin></TransactionTableMin>
+                            <TransactionTableMin title={"Site Wide Transactions"} mask={true}></TransactionTableMin>
                         </Row>
                         <Row>
                             <SimpleChart chartTitle={"Total Users"} data={user_history} dataType="users" chartType="area" index={0} refreshData={this.updateRegisteredUserHistory} interval={time_period_chart}></SimpleChart>
