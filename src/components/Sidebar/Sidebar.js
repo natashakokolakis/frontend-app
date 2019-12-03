@@ -215,7 +215,7 @@ class LeftSidebar extends Component {
 
                 {level != null &&
                 <div>
-                <li className="nav-item" onClick={this.props.logout}>
+                <li className="nav-item">
                     <i className="fa fa-sign-out"></i>
                     <a href="/" className="nav-link-top">Logout</a>
                 </li>
