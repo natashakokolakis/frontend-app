@@ -968,6 +968,10 @@
            flex: 0 auto;
            width: 50px;
        }
+
+       .ReactTable.-striped .rt-tr.-odd {
+        background: rgba(0,0,0,.03);
+    }
     
        .ReactTable .rt-th, .ReactTable .rt-td {
         display:block;
@@ -980,6 +984,13 @@
         justify-content: left;
         max-width: 100%;
         position: relative;
+    }
+
+    main-container .content-wrapper .page-content {
+        /* margin-top: 50px; */
+        height: 100%;
+        padding: 50px 10%;
+        /* padding-bottom: 70px; */
     }
        .main-container .footer-container{
            position: absolute;
