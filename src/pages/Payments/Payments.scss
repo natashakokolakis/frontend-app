@@ -890,7 +890,7 @@
        
                .-striped {
                    border: solid 1px #ffffff;
-                   height: 300px;
+                //    height: 300px;
                }
             }
        }
@@ -971,6 +971,7 @@
 
        .ReactTable.-striped .rt-tr.-odd {
         background: rgba(0,0,0,.03);
+        height: 50px;
     }
     
        .ReactTable .rt-th, .ReactTable .rt-td {
@@ -986,11 +987,11 @@
         position: relative;
     }
 
-    main-container .content-wrapper .page-content {
-        /* margin-top: 50px; */
+
+    .main-container .content-wrapper .page-content {
+        margin-top: 0px;
         height: 100%;
         padding: 50px 10%;
-        /* padding-bottom: 70px; */
     }
        .main-container .footer-container{
            position: absolute;
