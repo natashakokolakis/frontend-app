@@ -153,6 +153,12 @@ export default class TransactionTable extends Component {
                         columns={columns}
                         pageSize={entries}
                         showPagination={true}
+                        defaultSorted={[
+                            {
+                              id: "date",
+                              desc: true
+                            }
+                          ]}
                         resizable={true}
                         minRows={0}
                         />
