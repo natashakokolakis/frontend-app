@@ -6,11 +6,11 @@ import { formatAmount } from '../../util/util'
 import {Row, Col, Container} from "react-bootstrap"
 
 import PropTypes from 'prop-types';
-import { ReactTableDefaults } from "react-table";
-var columnSettings = {
-  ...ReactTableDefaults.column,
-  minWidth: 20
-};
+// import { ReactTableDefaults } from "react-table";
+// var columnSettings = {
+//   ...ReactTableDefaults.column,
+//   minWidth: 20
+// };
 
 class PaymentsTable extends Component {
     static propTypes = {
@@ -64,7 +64,7 @@ class PaymentsTable extends Component {
                         showPagination={false}
                         resizable={true}
                         minRows={0}
-                        column={columnSettings}
+                        // column={columnSettings}
                     />
                 </div>
             </div>
