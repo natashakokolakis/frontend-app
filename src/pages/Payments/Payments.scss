@@ -683,7 +683,7 @@
        }
        .reacttable-container1{
            //border: 1px solid black;
-           width: 00px;
+        //    width: 00px;
            min-width: 50vw;
            // width: 61.351vw;
            // margin-top: 6.823vw;
@@ -700,7 +700,7 @@
    
            .-striped {
                border: solid 1px #ffffff;
-               height: 300px;
+            //    height: 300px;
            }
         }
    }
@@ -782,7 +782,7 @@
    .ReactTable .rt-th, .ReactTable .rt-td {
     display:block;
     width: 100px;
-    white-space: unset;
+    white-space: nowrap;
    }
    .main-container .footer-container{
        position: absolute;
@@ -873,7 +873,7 @@
            }
            .reacttable-container1{
                //border: 1px solid black;
-               width: 00px;
+            //    width: 00px;
                min-width: 50vw;
                // width: 61.351vw;
                // margin-top: 6.823vw;
