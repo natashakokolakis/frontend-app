@@ -26,7 +26,7 @@ export default class SimpleChart extends Component {
 
         console.log(e.target.value);
         let newInterval = e.target.value;
-        this.setState({interval:newInterval},
+        this.setState({interval: newInterval},
         this.props.refreshData(newInterval));
 
         

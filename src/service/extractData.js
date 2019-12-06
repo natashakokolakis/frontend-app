@@ -159,9 +159,8 @@ export const formatUserHistoryData = (series_name, user_data) =>{
 
 export const formatRatesHistoryData = (data) => {
 
-    console.log("formatRatesHistoryData ",data);
+    console.log("NEW FORMATTED ",data);
     
-
     let currency_rate_histories = data;
     let chartData = [];
 
@@ -169,13 +168,13 @@ export const formatRatesHistoryData = (data) => {
 
         let obj = { name: rate_history.currency , data: []}
         obj['data'] = rate_history.rates.map( rate => {
-            return {x: Date.parse(convertDateInLineChart(rate.date)) , y:rate.rate};
+            return {x: Date.parse(convertDateInLineChart(rate.date)) , y:parseFloat(rate.rate)};
         });
 
         return obj;
     });
 
-    console.log("formatRatesHistoryData chartData",chartData);
+    //console.log("formatRatesHistoryData chartData",chartData);
 
     return chartData;
 }
