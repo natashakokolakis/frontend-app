@@ -46,8 +46,7 @@ export default class Exchange extends Component {
     }
 
     componentDidMount(){
-    
-        this.updateInfoTimer = setInterval(() => this.updateInfo(), 60*1000);
+        //this.updateInfoTimer = setInterval(() => this.updateInfo(), 60*1000);
         this.updateInfo();
     }
 
