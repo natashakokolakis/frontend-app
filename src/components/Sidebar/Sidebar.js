@@ -64,12 +64,7 @@ class LeftSidebar extends Component {
         return currencyInvestmentMapping
     }
 
-
-
-
     renderInvestmentsMenu(){
-
-
 
         // rearrange the investments
         const currencyInvestmentMapping = this.getCurrencyInvestmentMapping();
@@ -125,7 +120,7 @@ class LeftSidebar extends Component {
                                     }
                                     }} 
                                 className="nav-link"
-                                // onClick={() => {window.location.reload();}} 
+                                onClick={() => {this.props.toggle()}} 
                                 >{i.investment_name}</Link>
                             </div>
 
@@ -141,8 +136,7 @@ class LeftSidebar extends Component {
                                     }
                                     }} 
                                 className="nav-link"
-                                // onClick={() => {window.location.reload();}} 
-                                >{i.investment_name}</Link>
+s                                >{i.investment_name}</Link>
                             </div>
                            
                             </li>)
