@@ -46,6 +46,10 @@ export default class Dashboard extends Component{
             alertType:'',
             alertMessage:'',
 
+
+            showOrientation: parseInt(localStorage.getItem("new_user")) == 1
+
+
         };
 
        this.showAlert = this.showAlert.bind(this);
@@ -61,6 +65,26 @@ export default class Dashboard extends Component{
     dismissAlert(){
         this.setState({ isAlertVisible: false });
     }
+
+
+
+    showWelcomePage(){
+        this.setState({ showOrientation: true});
+    }
+
+    hideWelcomePage(){
+        this.setState({ showOrientation: false});
+
+       
+        
+    }
+
+
+
+
+    goFull = () => {
+        this.setState({ isFull: true });
+      }
 
 
 
