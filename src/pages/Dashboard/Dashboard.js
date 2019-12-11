@@ -46,7 +46,9 @@ export default class Dashboard extends Component{
             alertType:'',
             alertMessage:'',
 
+
             showOrientation: parseInt(localStorage.getItem("new_user")) == 1
+
 
         };
 
@@ -65,6 +67,7 @@ export default class Dashboard extends Component{
     }
 
 
+
     showWelcomePage(){
         this.setState({ showOrientation: true});
     }
@@ -75,6 +78,7 @@ export default class Dashboard extends Component{
        
         
     }
+
 
 
 
