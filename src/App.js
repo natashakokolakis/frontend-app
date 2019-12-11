@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 //import ReactDOM from "react-dom";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { SignIn, SignUp, ForgotPassword, Dashboard, Affiliates, Investment, Stats, Exchange, PasswordReset, Contact } from './pages';
+import { SignIn, SignUp, ForgotPassword, Dashboard, Affiliates, Investment, Stats, Exchange, PasswordReset, Contact, Payments } from './pages';
 import sessionTimeout from './HOC/sessionTimeout'
 import './App.scss';
 import { domain } from './config'
@@ -33,6 +33,7 @@ function App() {
           <Route path="/stats" component={Stats}/>
           <Route path="/exchange" component={sessionTimeout(Exchange)}/>
           <Route path="/contact" component={sessionTimeout(Contact)}/>
+          <Route path="/payments" component={sessionTimeout(Payments)}/>
 
           <Route render={ props => <Redirect to={{ pathname: '/signin', state: { from: props.location } }} /> } />
         </Switch>

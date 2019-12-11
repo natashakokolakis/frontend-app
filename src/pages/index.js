@@ -9,3 +9,4 @@ export { default as Exchange } from './Exchange/Exchange';
 export { default as Stats } from './Stats/Stats';
 export { default as Investment } from './Investment/Investment';
 export { default as Contact } from './Contact/Contact';
+export { default as Payments } from './Payments/Payments';
