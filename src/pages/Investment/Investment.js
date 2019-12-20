@@ -58,7 +58,7 @@ export default class Investment extends Component {
     componentDidMount(){
 
         //TODO: set a timer for update
-        this.updateInfoTimer = setInterval(() => this.updateAccountInfo(), 60*1000);
+        this.updateInfoTimer = setInterval(() => this.updateAccountInfo(), 60*60*1000); 
         this.updateAccountInfo();
     }
 
